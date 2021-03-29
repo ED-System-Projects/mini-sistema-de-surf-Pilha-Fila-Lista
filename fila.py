@@ -1,56 +1,48 @@
-class FilaException(Exception):
-    def __init__(self, mensagem):
-        super().__init__(mensagem)
-
-
 class FilaEncadeada:
     def __init__(self):
         self.__inicio = None
         self.__tamanho = 0
 
-    def inicio(self):
-        if self.vazia():
+    def mostrar_elemento(self):
+        if self.vazio():
             raise FilaException('A fila está vazia')
 
         return self.__inicio
 
-    def vazia(self):
+    def vazio(self):
         return self.__tamanho == 0
 
     def tamanho(self):
         return self.__tamanho
 
-    def inserir(self, novo_surfista):
+    def adicionar(self, surfista):
         aux = self.__inicio
 
         if aux == None:
-            self.__inicio = novo_surfista
+            self.__inicio = surfista
 
         else:
-            while aux.get_prox() != None:
-                aux = aux.get_prox()
+            while aux.prox != None:
+                aux = aux.prox
 
-            aux.set_prox(novo_surfista)
+            aux.prox = surfista
 
         self.__tamanho += 1
 
     def remover(self):
-        if self.vazia():
+        if self.vazio():
             raise FilaException('A fila está vazia')
 
-        self.__inicio = self.__inicio.get_prox()
+        self.__inicio = self.__inicio.prox
         self.__tamanho -= 1
-
-    def mostrar_elemento(self):
-        pass
 
     def __str__(self):
         saida = 'Fila: ['
         p = self.__inicio
 
         while p != None:
-            saida += f'{p.get_nome()},{p.get_titulos()},{p.get_idade(),p.get_cpf()}'
-            p = p.get_prox()
+            saida += f'{p.nome}'
+            p = p.prox
 
             if p != None:
                 saida += ', '
@@ -60,3 +52,7 @@ class FilaEncadeada:
 
     def imprimir(self):
         print(self.__str__())
+
+class FilaException(Exception):
+    def __init__(self, mensagem):
+        super().__init__(mensagem)
