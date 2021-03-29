@@ -23,23 +23,23 @@ class PilhaEncadeada:
 
     def remover(self):
         if self.vazio():
-            raise PilhaException('A pilha está vazia')
+            raise PilhaException('A pilha está vazia, não há o que remover.')
 
         self.__topo = self.__topo.prox
         self.__tamanho -= 1
 
     def __str__(self):
-        saida = 'Pilha: ['
+        saida = ''
         p = self.__topo
 
         while p != None:
-            saida += f'{p.nome}'
+            saida += f'\n{p.nome}'
             p = p.prox
 
             if p != None:
-                saida += ', '
+                saida += ' '
 
-        saida += ']'
+        saida += ' '
         return saida
 
     def imprimir(self):

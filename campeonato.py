@@ -22,25 +22,13 @@ class Campeonato:
     def surfistasL(self):
         return self._surfistasL
 
-    # @surfistasL.setter
-    # def surfistasL(self, surfistasL):
-    #     self._surfistasL = surfistasL
-
     @property
     def surfistasP(self):
         return self._surfistasP
 
-    # @surfistasP.setter
-    # def surfistasP(self, surfistasP):
-    #     self._surfistasP = surfistasP
-
     @property
     def surfistasF(self):
         return self._surfistasF
-
-    # @surfistasF.setter
-    # def surfistasF(self, surfistasF):
-    #     self._surfistasF = surfistasF
 
     def menor_idade(self):
         if self.surfistasL.vazio():
@@ -100,9 +88,8 @@ class Campeonato:
 
     def imprimir_surfistas(self):
         if self.surfistasL.vazio():
-            raise CampeonatoException('Campeonato ainda não tem surfistas')
+            raise CampeonatoException('A lista de participantes do Campeonato está vazia.')
         aux = self.surfistasL.inicio()
-        print('Surfistas no campeonato:')
         while aux != None:
             print(aux)
             aux = aux.prox
@@ -117,7 +104,8 @@ class Campeonato:
         return self.surfistasF.tamanho()
 
     def __str__(self):
-      return f"{self._nome_do_campeonato}"
+        return f"{self._nome_do_campeonato}"
+
 
 class CampeonatoException(Exception):
     def __init__(self, mensagem):

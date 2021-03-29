@@ -61,8 +61,7 @@ class ListaEncadeada:
         surfista = self.mostrar_elemento(posicao)
         if surfista.cpf == cpf:
             return surfista
-        raise ListaException(
-            f'Surfista com o cpf {cpf} não encontrado na posição {posicao}')
+        raise ListaException(f'Surfista com o cpf {cpf} não encontrado na posição {posicao}')
 
     def buscar_por_cpf(self, cpf):
         aux = self.__inicio
@@ -74,7 +73,7 @@ class ListaEncadeada:
 
     def ordenar(self):
         if self.vazio() or self.__tamanho == 1:
-            return
+            raise ListaException("A lista está vazia, não há o que ordenar.")
 
         final = self.__tamanho - 1
         while final > 0:
@@ -122,6 +121,7 @@ class ListaEncadeada:
 
     def imprimir(self):
         print(self.__str__())
+
 
 class ListaException(Exception):
     def __init__(self, mensagem):

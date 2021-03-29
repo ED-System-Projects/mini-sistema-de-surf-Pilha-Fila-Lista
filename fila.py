@@ -31,27 +31,28 @@ class FilaEncadeada:
 
     def remover(self):
         if self.vazio():
-            raise FilaException('A fila está vazia')
+            raise FilaException('A fila está vazia, não há o que remover.')
 
         self.__inicio = self.__inicio.prox
         self.__tamanho -= 1
 
     def __str__(self):
-        saida = 'Fila: ['
+        saida = ' '
         p = self.__inicio
 
         while p != None:
-            saida += f'{p.nome}'
+            saida += f'\n{p.nome}'
             p = p.prox
 
             if p != None:
-                saida += ', '
+                saida += ' '
 
-        saida += ']'
+        saida += ' '
         return saida
 
     def imprimir(self):
         print(self.__str__())
+
 
 class FilaException(Exception):
     def __init__(self, mensagem):
